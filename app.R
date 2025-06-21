@@ -7,7 +7,7 @@ library(thematic)
 library(ggthemes)
 library(DT)
 library(plotly)
-
+library(rsconnect)
 
 # Importing SIR Model
 sir_model <- readRDS("SIR.rds")
@@ -22,8 +22,8 @@ thematic_on(bg = "auto",
 # Setting ggplot theme
 theme_set(theme_clean())
 
-# Manifest File for Posit
-rsconnect::writeManifest()
+# Generating Manifest File for Posit Upload
+# writeManifest()
 
 
 # User-Interface 
