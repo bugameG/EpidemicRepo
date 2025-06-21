@@ -311,7 +311,7 @@ server <- function(input, output) {
         ## GGPLOT
         output$dlplot <- downloadHandler(
           filename = function(){
-            paste("SIR_Plot.jpg")
+            paste("SIR_Plot",Sys.Date(),".jpg",sep="")
           },
           content = function(file){
             epidemic_dl_table <- reactive_sir_data()
@@ -327,7 +327,9 @@ server <- function(input, output) {
                    title = paste("Disease Progression"
                                  ,"\n","N:",input$N,",Initial Infected:",input$IID,
                                  ",Transmission rate:",input$transmissionID,",Recovery rate:",input$recoveryID))+
-              scale_color_discrete(name="Condition", labels=c("Susceptible","Infectious","Recovered"))+
+              scale_color_discrete(name="Condition",
+                                   limits=c("infectious","recovered","susceptible"),
+                                   labels=c("Infectious","Recovered","Susceptible"))+
               theme_clean()
             
             ggsave(file, plot = sir_plot, width = 8, height = 5)
