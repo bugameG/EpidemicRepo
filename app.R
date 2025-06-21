@@ -22,6 +22,9 @@ thematic_on(bg = "auto",
 # Setting ggplot theme
 theme_set(theme_clean())
 
+# Manifest File for Posit
+rsconnect::writeManifest()
+
 
 # User-Interface 
 ui <- fluidPage(
